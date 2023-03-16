@@ -1,0 +1,190 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <h3 class="display-4 text-center">Quản Lý học viện</h3>
+                <form id="formQLSV">
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Đối tượng </label>
+                            <select name="" id="dtQL" class="form-control">
+                                <option>Chọn đối tượng</option>
+                                <option value="Học Sinh">Học Sinh</option>
+                                <option value="Khách Hàng">Khách hàng</option>
+                                <option value="Nhân Viên">Nhân viên</option>
+                            </select>
+                            <span id="spanDTQL" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Mã: </label>
+                            <input type="text" class="form-control" id="txtMaSV">
+                            <span id="spanMaSV" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Tên: </label>
+                            <input type="text" class="form-control" id="txtTenSV">
+                            <span id="spanTenSV" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Email : </label>
+                            <input type="text" class="form-control" id="txtEmail">
+                            <span id="spanEmailSV" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Địa chỉ: </label>
+                            <input type="text" class="form-control" id="txtAddress">
+                            <span id="spanAddress" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Tên công ty </label>
+                            <input type="text" class="form-control" id="txtCompany">
+                            <span id="spanCompany" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Trị giá hóa đơn: </label>
+                            <input type="text" class="form-control" id="txtBill">
+                            <span id="spanBill" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Đánh giá: </label>
+                            <input type="text" class="form-control" id="txtReview">
+                            <span id="spanReview" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <p class="text-danger">Từ đây về cuối chỉ điền số, nếu điền khác sẽ trả ra 0</p>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="">Điểm toán : </label>
+                            <input type="text" class="form-control" id="txtDiemToan">
+                            <span id="spanToan" class="text-danger"></span>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="">Điểm lý : </label>
+                            <input type="text" class="form-control" id="txtDiemLy">
+                            <span id="spanLy" class="text-danger"></span>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="">Điểm hóa : </label>
+                            <input type="text" class="form-control" id="txtDiemHoa">
+                            <span id="spanHoa" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Số ngày làm việc: </label>
+                            <input type="text" class="form-control" id="txtDay">
+                            <span id="spanDay" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Lương theo ngày: </label>
+                            <input type="text" class="form-control" id="txtProfit">
+                            <span id="spanProfit" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="button" id="btnCreate"  class="btn btn-success" onclick="createMem()">Thêm</button>
+
+                        <button type="button"  class="btn btn-dark" onclick="sortAz()">Sort A-Z</button>
+                        <button type="button"  class="btn btn-info" onclick="Update()">Cập Nhật</button>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-9 form-group">
+                        <label for="">Đối tượng cần tìm </label>
+                        <select name="" id="txtSearch" class="form-control">
+                            <option>Chọn đối tượng</option>
+                            <option value="Học Sinh">Học Sinh</option>
+                            <option value="Khách Hàng">Khách hàng</option>
+                            <option value="Nhân Viên">Nhân viên</option>
+                        </select>
+                        <span id="spanDTQL" class="text-danger"></span>
+                    </div>
+                    <div class="col-3 form-group">
+                        <button id="btnSearch" class="btn btn-primary" onclick="filterMem()">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 mx-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>Mã</th>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Phân loại</th>
+                        <th>Điểm Trung Bình/Tổng lương/Review</th>
+                        <th>Tên công ty</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodySinhVien">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+            <script src="./class.js"></script>
+        <script src="./index.js"></script>
+        <script>
+            function sortAz() {
+                memberList.sort((a, b) => {
+                    let A = a.name.toUpperCase();
+                    let B = b.name.toUpperCase();
+                    if (A < B) {
+                        return -1;
+                    }
+                    if (A > B) {
+                        return 1;
+                    }
+                    // names must be equal
+                    return 0;
+                });
+                renderTable(memberList);
+            }
+            function filterMem() {
+                    let type = getEle("#txtSearch").value;
+                    if (type == "Học Sinh") {
+                        renderTable(StudentList)
+                    }
+                    else if (type == "Khách Hàng") {
+                        renderTable(CustomerList)
+                    }
+                    else if (type == "Nhân Viên") {
+                        renderTable(employeeList)
+                    }
+                }
+        </script>
+
+    </div>
+</body>
+
+</html>
